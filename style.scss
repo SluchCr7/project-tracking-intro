@@ -1,0 +1,219 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+:root{
+    --Red: hsl(0, 100%, 68%);
+    --Very-Dark-Blue: hsl(230, 29%, 20%);
+    --Dark-Grayish-Blue: hsl(230, 11%, 40%);
+    --Grayish-Blue: hsl(231, 7%, 65%);
+    --Light-Grayish-Blue: hsl(207, 33%, 95%);
+    --fontText : 'Barlow Condensed', sans-serif; 
+    --fontBody : "Barlow", sans-serif;
+}
+html{
+    font-size: 13px;
+}
+@mixin flex($direction, $gap, $align){
+    display: flex;
+    flex-direction: $direction;
+    align-items: $align;
+    gap: $gap;
+}
+body{
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    font-size: 13px;
+    background-color: #fff;
+    padding: 5rem 14rem;
+}
+.content{
+    @include flex(column, 2rem, center);
+    width: 100%;
+    nav{
+        @include flex(row, 0, center);
+        width: 100%;
+        justify-content: space-between;
+        .logo{
+        }
+        .menu{
+            @include flex(row, 40px, center);
+            ul{
+                @include flex(row, 85px, center);
+                list-style: none;
+                font-size: 1.1rem;
+                li{
+                    a{
+                        text-decoration: none;
+                        color: hsl(230, 29%, 20%);
+                        font-weight: 600;
+                        font-family: var(--fontText);
+                        text-transform: uppercase;
+                        font-size: 2.5rem;
+                        &:hover{
+                            color: hsl(0, 100%, 68%);
+                            cursor: pointer;
+                            // font-weight: 600;
+                            text-decoration: underline;
+                        }
+                    }
+                }
+            }
+            i{
+                color: var(--Dark-Grayish-Blue);
+                font-size: 20px;
+                cursor: pointer;
+                display: none;
+            }
+        }
+    }
+    .bg{
+        width: 50%;
+        background-color: var(--Light-Grayish-Blue);
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 50%;
+        border-radius: 0 0 50px 50px;
+        z-index: -1;
+    }
+    .content_body{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        // justify-content: center;
+        gap: 50px;
+        width: 100%;
+        // padding: 5rem 10rem;
+        padding-top: 5rem;
+        .img_content{
+            width: 50%;
+            img{
+                width: 100%;
+            }
+        }
+        .txt_content{
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            gap: 10px;
+            width: 50%;
+            .txt_top{
+                @include flex(row,10px ,center);
+                .new{
+                    border-radius: 30px;
+                    padding: 5px 8px;
+                    line-height: 30px;
+                    font-family: var(--fontBody);
+                    font-size: 1.6rem;
+                    width: 80px;
+                    background-color: var(--Very-Dark-Blue);
+                    color: #fff;
+                    font-weight: 700;
+                    text-align: center;
+                    margin-right: 10px;
+                    letter-spacing: 0px;
+                }
+                h1{
+                    color: var(--Grayish-Blue);
+                    font-size: 2rem;
+                    font-family: var(--fontText);
+                    font-weight: 500;
+                    text-transform: uppercase;
+                    letter-spacing: 3px;
+                }
+            }
+            p{
+                color: #000;
+                font-size: 9rem;
+                font-family: var(--fontText);
+                line-height: 9rem;
+                font-weight: bold;
+                width: 86%;
+                letter-spacing: 1.5px;
+                padding: 20px 0;
+            }
+            .txt{
+                color: var(--Grayish-Blue);
+                font-size: 1.7rem;
+                font-family: var(--fontBody);
+                line-height: 1.5;
+                width: 50%;
+                font-weight: 600;
+                padding-bottom: 30px;
+            }
+            .preview{
+                @include flex(row, 20px, center);
+                margin: 20px 0;
+                button{
+                    background-color: var(--Red);
+                    color: #fff;
+                    padding: 15px 20px;
+                    border-radius: 10px;
+                    border: none;
+                    font-family: var(--fontText);
+                    font-size: 1.5rem;
+                    font-weight: 600;
+                    text-transform: uppercase;
+                    width: 190px;
+                    transition: .5s ease;
+                    &:hover{
+                        cursor: pointer;
+                        background-color: var(--Grayish-Blue);
+                    }
+                }
+                span{
+                    letter-spacing: 6px;
+                    font-family: var(--fontText);
+                    font-size: 1.5rem;
+                    text-transform: uppercase;
+                    color: var(--Grayish-Blue);
+                    font-weight: 600;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .content nav .menu ul {
+        display: none;
+    }
+    body{
+        padding: 5rem 1rem;
+    }
+    .content .content_body{
+        flex-direction: column-reverse;
+    }
+    .content .content_body .img_content{
+        width: 100%;
+    }
+    .content .content_body .txt_content{
+        padding: 0 3rem;
+        width: 100%;
+        p{
+            font-size: 3rem;
+            line-height: 3rem;
+            width: 95%;
+        }
+        .txt_top{
+            .new{
+                font-size: 1.2rem;
+                width: 55px;
+            }
+            h1{
+                font-size: 1.5rem;
+            }
+        }
+        .txt{
+            width: 87%;
+            font-size: 1.3rem;
+            color: var(--Very-Dark-Blue);
+        }
+        .preview span{
+            font-size: .8rem;
+        }
+    }
+    
+}
